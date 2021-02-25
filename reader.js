@@ -69,20 +69,21 @@ function handleJSON(data, maxNumPosts){
 function printPost(post, postNumber, layout){
     var title = post.title;
     var sub_heading = post.subHeading;
+    var link = post.link;
     var image = post.tamhsc_640x500_thumbnail_src;
     var output = "";
     output += '<div id="' + postNumber + '" class="vr-article ' + layout + ' mb-3 mb-lg-0">\n';
+        output += '<a href="' + link + '">\n'
+            output +='<div class="hovereffect" tabindex="0">\n';
 
-        output +='<div class="hovereffect" tabindex="0">\n';
+                output += '<div class="bg-cover bg-black" style="background-image: url(\'' + image + '\');" style="background-position: center;" ></div>\n';
 
-            output += '<div class="bg-cover bg-black" style="background-image: url(\'' + image + '\');" style="background-position: center;" ></div>\n';
+                output += '<h3 class="font-size-2 font-weight-200 text-white">' + title + '</h3>\n';
 
-            output += '<h3 class="font-size-2 font-weight-200 text-white">' + title + '</h3>\n';
+                output += '<p class="text-white">' + sub_heading + '</p>\n';
 
-            output += '<p class="text-white">' + sub_heading + '</p>\n';
-
-        output += '</div>\n';
-
+            output += '</div>\n';
+        output += '</a>\n';
     output +='</div>\n';
 
     return output;
