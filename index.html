@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <script src="reader.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://public-health.tamu.edu/css/public-health.css">
+    <link rel="stylesheet" href="https://health.tamu.edu/css/main.min.css?v=8-12-19">
+    <link rel="stylesheet" href="https://health.tamu.edu/css/main.min.css?v=8-12-19">
+    <title>Hello, world!</title>
+    <style>
+        .hero-top-section {
+            clip-path: polygon(100% 0, 100% 95%, 53% 95%, 50% 100%, 47% 95%, 0 95%, 0 0);
+            -webkit-clip-path: polygon(100% 0, 100% 95%, 53% 95%, 50% 100%, 47% 95%, 0 95%, 0 0);
+        }
+
+        .button-primary {
+            width: 100%;
+        }
+
+        .full-screen-scroll-button {
+            display: none;
+        }
+
+        #departments .department-eoh {
+            background-image: url('/images/eoh/eoh-image.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        #departments .department-epi {
+            background-image: url(/images/epi/epi-image.jpg);
+            background-size: cover;
+        }
+
+        #departments .department-hpm {
+            background-image: url('/images/hpm/hpm-image.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        #departments .department-hpchs {
+            background-image: url('/images/hpchs/hpchs-image1.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        #departments .department-phs {
+            background-image: url('/images/phs/phs-hp.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        #departments .box {
+            min-height: 250px;
+        }
+
+        .department-name {
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            font-weight: 400;
+            text-transform: uppercase;
+            font-style: normal;
+            font-size: 1.1rem;
+            padding: .4rem;
+        }
+
+        #departments a {
+            margin-bottom: 0;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        #departments a:hover {
+            color: #eca700;
+        }
+
+        .rounded-circle {
+            width: 70%;
+        }
+
+        #counter .brag-icon {
+            min-height: 80px;
+        }
+
+        #research-articles>div {
+            height: 300px;
+        }
+
+        .hovereffect {
+            background-color: black;
+            padding: 2em;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .bg-cover.bg-black:hover {
+            opacity: .15;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="vr-feed-container" class="container">
+        <script>
+            createFeed("https://vitalrecord.tamhsc.edu/tamhsc-json/vital-record-all", 6);
+        </script>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
