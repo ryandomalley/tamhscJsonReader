@@ -67,17 +67,17 @@ function handleJSON(data, maxNumPosts){
                 // Converts the 2D loop structure into the 1D array that the posts are contained in
                 var postIndex = 3*i + j;
 
+                // Ensures the last post takes up the rest of the row
+                if(postsLeft == 1){
+                    output += printPost(data.posts[postIndex], postIndex, layout_auto);
+                }
                 // Creates the larger right most column on even rows
-                if(j == 2 && i%2 == 0){
+                else if(j == 2 && i%2 == 0){
                     output += printPost(data.posts[postIndex], postIndex, layout_lg_6);
                 }
                 // Creates the larger left most column on odd rows
                 else if(j == 0 && i%2 == 1){
                     output += printPost(data.posts[postIndex], postIndex, layout_lg_6);
-                }
-                // Ensures the last post takes up the rest of the row
-                else if(postsLeft == 1){
-                    output += printPost(data.posts[postIndex], postIndex, layout_auto);
                 }
                 // Default case
                 else{
@@ -85,6 +85,7 @@ function handleJSON(data, maxNumPosts){
                 }
                 // Decrement to take number of posts left
                 postsLeft--;
+                console.log(postsLeft);
             }
 
             output += '</div>\n';
