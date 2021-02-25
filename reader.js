@@ -37,7 +37,7 @@ function handleJSON(data, maxNumPosts){
 
     else{
         var numRows = Math.ceil(maxNumPosts/3.0);
-        var postsLeft = jsonPostCount;
+        var postsLeft = maxNumPosts;
 
         for(var i = 0; i < numRows; ++i){
             output += '<div class="row mb-4">\n';
@@ -46,7 +46,6 @@ function handleJSON(data, maxNumPosts){
                 if(postsLeft == 0){
                     break;
                 }
-
                 var postIndex = 3*i + j;
                 if(j == 2 && i%2 == 0){
                     output += printPost(data.posts[postIndex], postIndex, layout_lg_6);
@@ -54,9 +53,13 @@ function handleJSON(data, maxNumPosts){
                 else if(j == 0 && i%2 == 1){
                     output += printPost(data.posts[postIndex], postIndex, layout_lg_6);
                 }
+                else if(postsLeft == 1){
+                    output += printPost(data.posts[postIndex], postIndex, layout_auto);
+                }
                 else{
                     output += printPost(data.posts[postIndex], postIndex, layout_lg_3);
                 }
+                postsLeft--;
             }
 
             output += '</div>\n';
@@ -74,7 +77,7 @@ function printPost(post, postNumber, layout){
     var output = "";
     output += '<div id="' + postNumber + '" class="vr-article ' + layout + ' mb-3 mb-lg-0">\n';
         output += '<a href="' + link + '">\n'
-            output +='<div class="hovereffect" tabindex="0">\n';
+            output +='<div class="hovereffect" tabindex="0" style="min-height: 300px">\n';
 
                 output += '<div class="bg-cover bg-black" style="background-image: url(\'' + image + '\');" style="background-position: center;" ></div>\n';
 
