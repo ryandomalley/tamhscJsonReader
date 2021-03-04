@@ -14,13 +14,17 @@ var layout_lg_6 = 'col-lg-6';
 *   maxNumPosts : how many posts to display on the grid
 */
 function createFeed(url, maxNumPosts){
-    //JQuery downloads the JSON feed then passes the data to handleJSON() function
-    $.getJSON(url, function(data){
-        handleJSON(data, maxNumPosts);
-    });
+    //Fetch API downloads JSON file to feed to our handler
+    fetch(url)
+        .then(function(resp) {
+            return resp.json();
+        })
+        .then(function(data){
+            handleJSON(data, maxNumPosts);
+        });
 }
 
-/*  createFeed()
+/*  handleJSON()
 *   Description: Inserts a news grid from a JSON feed
 *
 *   data : the data from the json file
