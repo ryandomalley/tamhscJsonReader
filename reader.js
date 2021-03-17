@@ -24,6 +24,40 @@ function createFeed(url, maxNumPosts){
         });
 }
 
+/**
+ * Given an URL to a JSON feed, creates a bullet point list of the feed where the function is called
+ * @param {String} url the URL to the JSON feed
+ * @param {Number} maxNumPosts the amount of posts to display
+ * @param {String} divId the HTML id for the div in which to insert the feed
+ */
+function bulletPointFeed(url, maxNumPosts, divId){
+    console.log('bf called');
+    fetch(url)
+        //Return the web server's response as JSON
+        .then(function(resp) {
+            return resp.json();
+        })
+        //Handle the JSON response
+        .then(function(data){
+            output = "<ul style='list-style-type: none;'>\n";
+            var jsonPostCount  = Object.keys(data.posts).length; // Length of the number of JSON posts in feed
+            for(var i = 0; i < maxNumPosts && i < jsonPostCount; i++){
+                var articleLink = data.posts[i].link;
+                var articleTitle = data.posts[i].title;
+                var publication = data.posts[i].publication;
+                if(!publication){
+                    publication = "";
+                }
+                else{
+                    publication = "| " + publication;
+                }
+                output += "<li style='margin-bottom: 0.8rem;'><a href=\"" + articleLink + "\">" + articleTitle + "</a>" + publication + "</li>\n"; 
+            }
+            output += "</ul>\n";
+            document.getElementById(divId).innerHTML = output;
+        });
+}
+
 /*  handleJSON()
 *   Description: Inserts a news grid from a JSON feed
 *
