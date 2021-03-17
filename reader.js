@@ -31,29 +31,37 @@ function createFeed(url, maxNumPosts){
  * @param {String} divId the HTML id for the div in which to insert the feed
  */
 function bulletPointFeed(url, maxNumPosts, divId){
-    console.log('bf called');
     fetch(url)
         //Return the web server's response as JSON
         .then(function(resp) {
-            return resp.json();
+            return resp.json(); //Get json
         })
         //Handle the JSON response
         .then(function(data){
+            /* Handling the format provided by Vital Record
+            *  Some of the feeds use a post object (mainly the articles published on VR)
+            *  Others don't, and the json data needs to be directly iterated */
+            if(data.posts){
+                data = data.posts; // Redefine data as the post object ONLY IF it exists
+            }
             output = "<ul style='list-style-type: none;'>\n";
-            var jsonPostCount  = Object.keys(data.posts).length; // Length of the number of JSON posts in feed
+            var jsonPostCount  = Object.keys(data).length; // Length of the number of JSON posts in feed
+            // Iterate through the 
             for(var i = 0; i < maxNumPosts && i < jsonPostCount; i++){
-                var articleLink = data.posts[i].link;
-                var articleTitle = data.posts[i].title;
-                var publication = data.posts[i].publication;
+                var articleLink = data[i].link;
+                var articleTitle = data[i].title;
+                var publication = data[i].publication; // Appears on in-the-news feed
                 if(!publication){
-                    publication = "";
+                    publication = ""; // If the publication value key is undefined
                 }
                 else{
-                    publication = "| " + publication;
+                    publication = "| " + publication; // If the publication exists
                 }
                 output += "<li style='margin-bottom: 0.8rem;'><a href=\"" + articleLink + "\">" + articleTitle + "</a>" + publication + "</li>\n"; 
             }
             output += "</ul>\n";
+            // Replace the innerHTML of the id provided by the function call
+            // Displays the results
             document.getElementById(divId).innerHTML = output;
         });
 }
