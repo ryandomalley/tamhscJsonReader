@@ -24,7 +24,9 @@ function createFeed(url, maxNumPosts){
             injectStyle();
         });
 }
-
+/*  injectStyle()
+*   Description: automatically injects required CSS into the head of the document.
+*/
 function injectStyle(){
     const style = document.createElement('style');
     style.textContent = `
