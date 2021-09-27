@@ -21,7 +21,30 @@ function createFeed(url, maxNumPosts){
         })
         .then(function(data){
             handleJSON(data, maxNumPosts);
+            injectStyle();
         });
+}
+
+function injectStyle(){
+    const style = document.createElement('style');
+    style.textContent = `
+    .hovereffect {
+        background-color: black;
+        background-size: cover;
+        padding: 2em;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .bg-cover.bg-black{
+        transition: .4s;
+    }
+    .bg-cover.bg-black:hover {
+        opacity: .15;
+
+    }
+    `;
+    document.head.append(style);
 }
 
 /**
